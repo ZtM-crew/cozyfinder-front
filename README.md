@@ -6,5 +6,4 @@ Development started: February, 2019.
 Developers:
 
   Chandler Baskins
-  Tamas Knisz
 
