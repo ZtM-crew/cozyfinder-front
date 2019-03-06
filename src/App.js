@@ -1,17 +1,41 @@
 import React, { Component } from 'react';
+import Navbar from './components/Navbar/Navbar';
+import LogIn from './components/LogIn/LogIn';
+import LogOut from './components/LogOut/LogOut';
+
+
+
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.handleLoginClick= this.handleLoginClick.bind(this);
+    this.handleLogoutClick= this.handleLogoutClick.bind(this);
+    this.state = {
+      user: true, 
+    }
+  }
+
+  handleLoginClick() {
+    this.setState({user: true});
+  }
+
+  handleLogoutClick() {
+    this.setState({user: false});
+  }
   render() {
+    const user = this.state.user;
+    let button;
+    if(user) {
+      button = <LogOut onClick={this.handleLogoutClick}/>;
+    } else {
+      button = <LogIn onClick={this.handleLoginClick}/>;
+    }
     return (
         <div>
-
-          {/** Run the application and check that appear the blue text in a blue box **/}
-          <section className="mw6 center shadow-3 b--solid bw1 br4 b--blue blue ma3">
-            <h1 className="tc code">React App with Tachyons</h1>
-          </section>
-          {/** If works properly, you can delete this block **/}
-
+            <Navbar/>
+            {button}
         </div>
     );
   }
