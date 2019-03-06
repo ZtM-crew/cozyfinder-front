@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import LogIn from './components/LogIn/LogIn';
-import LogOut from './components/LogOut/LogOut';
+import Profile from './components/Profile/Profile';
 
 
 
@@ -13,7 +13,7 @@ class App extends Component {
     this.handleLoginClick= this.handleLoginClick.bind(this);
     this.handleLogoutClick= this.handleLogoutClick.bind(this);
     this.state = {
-      user: true, 
+      user: false,
     }
   }
 
@@ -24,18 +24,28 @@ class App extends Component {
   handleLogoutClick() {
     this.setState({user: false});
   }
+
+
   render() {
-    const user = this.state.user;
-    let button;
-    if(user) {
-      button = <LogOut onClick={this.handleLogoutClick}/>;
-    } else {
-      button = <LogIn onClick={this.handleLoginClick}/>;
-    }
+    const { user } = this.state;
+
     return (
         <div>
-            <Navbar/>
-            {button}
+
+          { user === false
+              ?
+
+              <LogIn onClick = {this.handleLoginClick} />
+
+              :
+
+              <div>
+                <Navbar logout={this.handleLogoutClick} />
+                <Profile />
+              </div>
+
+
+          }
         </div>
     );
   }
