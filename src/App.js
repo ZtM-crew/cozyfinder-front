@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import LogIn from './components/LogIn/LogIn';
 import Profile from './components/Profile/Profile';
+import Title from './components/Title/Title';
 
 
 
@@ -31,6 +32,8 @@ class App extends Component {
 
     return (
         <div>
+
+          <Title />
 
           { user === false
               ?
