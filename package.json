@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.3",
+    "react-burger-menu": "^2.6.5",
     "react-dom": "^16.8.3",
     "react-scripts": "2.1.5",
+    "save-dev": "^2.0.0",
     "tachyons": "^4.11.1"
   },
   "scripts": {
