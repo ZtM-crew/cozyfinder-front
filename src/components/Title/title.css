@@ -1,0 +1,21 @@
+
+
+.logo {
+    width: 60px;
+    padding-top: 30px;
+}
+
+.title {
+    font-family: 'Open Sans';
+    display: inline;
+    padding-left: 5px;
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
