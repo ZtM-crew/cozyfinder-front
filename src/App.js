@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import LogIn from './components/LogIn/LogIn';
 import Profile from './components/Profile/Profile';
 import Title from './components/Title/Title';
+import Form from './components/Form/Form';
 
 
 
@@ -13,6 +14,7 @@ class App extends Component {
     super(props);
     this.handleLoginClick= this.handleLoginClick.bind(this);
     this.handleLogoutClick= this.handleLogoutClick.bind(this);
+    this.displayForm= this.displayForm.bind(this); 
     this.state = {
       user: false,
     }
@@ -26,6 +28,14 @@ class App extends Component {
     this.setState({user: false});
   }
 
+  displayForm() {
+    return(
+      <div>
+        <Form onClick={this.handleLoginClick} /> 
+      </div>
+    );
+  }
+  
 
   render() {
     const { user } = this.state;
@@ -34,11 +44,16 @@ class App extends Component {
         <div>
 
           <Title />
+        
 
           { user === false
               ?
-
-              <LogIn onClick = {this.handleLoginClick} />
+            <div>
+              <LogIn props={this.displayForm}/>
+              <Form onClick={this.handleLoginClick} /> 
+              
+              <Navbar logout={this.handleLogoutClick} />
+              </div>
 
               :
 

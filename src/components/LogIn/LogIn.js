@@ -4,7 +4,7 @@ import './LogIn.css'
 
 const LogIn = (props) => {
     return (
-        <button onClick={props.onClick} className="login">LogIn</button>
+        <button onClick={props.displayForm} className="login">LogIn</button>
     );
 };
 
