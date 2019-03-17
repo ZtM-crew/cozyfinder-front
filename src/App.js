@@ -14,59 +14,51 @@ class App extends Component {
     super(props);
     this.handleLoginClick= this.handleLoginClick.bind(this);
     this.handleLogoutClick= this.handleLogoutClick.bind(this);
-    this.displayForm= this.displayForm.bind(this); 
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      user: false,
+      route: 'landing',
     }
   }
 
   handleLoginClick() {
-    this.setState({user: true});
+    this.setState({route: 'signin'});
   }
 
   handleLogoutClick() {
-    this.setState({user: false});
+    this.setState({route: 'landing'});
   }
 
-  displayForm() {
-    return(
-      <div>
-        <Form onClick={this.handleLoginClick} /> 
-      </div>
-    );
+  handleSubmit() {
+    this.setState({route: 'loggedin'});
   }
+
   
 
   render() {
-    const { user } = this.state;
+    const { route } = this.state;
 
     return (
-        <div>
+      <div>
+        <Title />
 
-          <Title />
-        
+        { route === 'landing'
+          ? <LogIn login={this.handleLoginClick} />
+          : ( route === 'signin'
+              ? <Form submit={this.handleSubmit} />
+              : ( 
+                  <div>
+                      <Navbar logout={this.handleLogoutClick} />
+                      <Profile />
+                   </div>
 
-          { user === false
-              ?
-            <div>
-              <LogIn props={this.displayForm}/>
-              <Form onClick={this.handleLoginClick} /> 
-              
-              <Navbar logout={this.handleLogoutClick} />
-              </div>
+                )
+            )
+        }
 
-              :
-
-              <div>
-                <Navbar logout={this.handleLogoutClick} />
-                <Profile />
-              </div>
-
-
-          }
-        </div>
+      </div>
     );
   }
+      
 }
 
 export default App;
