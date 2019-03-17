@@ -9,6 +9,7 @@ Development started: February, 2019.
   
   <dd>Chandler Baskins</dd>
   <dd>Tamas Knisz</dd>
+  <dd>Rex Joseph<dd/>
   
   
 </dl>
