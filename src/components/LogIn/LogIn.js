@@ -2,9 +2,9 @@ import React from 'react';
 import './LogIn.css'
 
 
-const LogIn = (props) => {
+const LogIn = ({login}) => {
     return (
-        <button onClick={props.onClick} className="login">LogIn</button>
+        <button onClick={login} className="login">LogIn</button>
     );
 };
 
