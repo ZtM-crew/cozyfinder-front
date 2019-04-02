@@ -1,0 +1,176 @@
+
+
+button,
+input {
+    /* 1 */
+    overflow: visible;
+}
+
+
+button,
+select {
+    /* 1 */
+    text-transform: none;
+}
+
+
+/*fieldset {*/
+    /*padding: 0.35em 0.75em 0.625em;*/
+    /*border-width: 0px;*/
+/*}*/
+
+.fs {
+
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px -20px 0px;
+    border-width: 0px
+
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.searchdiv  {
+    min-height: 10vh;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+
+    background-size: cover;
+    background-position: center center;
+    padding: 10px;
+    border-width: 0px 0px 1px 0px;
+    border-color: #e5ebef;
+    border-style: solid;
+
+}
+
+.searchdiv  form {
+    width: 100%;
+    max-width: 790px;
+}
+
+.searchdiv  form legend {
+    font-size: 36px;
+    color: #fff;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 59px;
+}
+
+.searchdiv  form .inner-form {
+    width: 100%;
+    margin-bottom: 17px;
+}
+
+.searchdiv  form .inner-form .input-field {
+    height: 70px;
+    width: 100%;
+    position: relative;
+}
+
+.searchdiv  form .inner-form .input-field input {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    background: #fff;
+    display: block;
+    width: 100%;
+    padding: 10px 32px 10px 70px;
+    font-size: 18px;
+    color: #666;
+    border-radius: 0px;
+}
+
+.searchdiv  form .inner-form .input-field input.placeholder {
+    color: #ccc;
+    font-size: 18px;
+}
+
+.searchdiv  form .inner-form .input-field input:-moz-placeholder {
+    color: #ccc;
+    font-size: 18px;
+}
+
+.searchdiv  form .inner-form .input-field input::-webkit-input-placeholder {
+    color: #ccc;
+    font-size: 18px;
+}
+
+.searchdiv  form .inner-form .input-field input:hover, .searchdiv  form .inner-form .input-field input:focus {
+    box-shadow: none;
+    outline: 0;
+}
+
+.searchdiv  form .inner-form .input-field .btn-search {
+    width: 70px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchdiv  form .inner-form .input-field .btn-search svg {
+    fill: #ccc;
+    width: 30px;
+    height: 30px;
+    transition: all .2s ease-out, color .2s ease-out;
+}
+
+.searchdiv  form .inner-form .input-field .btn-search:hover, .searchdiv  form .inner-form .input-field .btn-search:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.searchdiv  form .inner-form .input-field .btn-search:hover svg, .searchdiv  form .inner-form .input-field .btn-search:focus svg {
+    fill: #666;
+}
+
+.searchdiv  form .suggestion-wrap {
+    padding: 0 15px;
+}
+
+.searchdiv  form .suggestion-wrap span {
+    font-size: 14px;
+    font-family: 'Helvetica', sans-serif;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0 15px;
+    line-height: 32px;
+    color: #fff;
+    border-radius: 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .searchdiv  form .inner-form .input-field {
+        margin-bottom: 20px;
+        height: 50px;
+    }
+    .searchdiv  form .inner-form .input-field input {
+        padding-left: 55px;
+        font-size: 16px;
+    }
+    .searchdiv  form .inner-form .input-field .btn-search svg {
+        width: 26px;
+        height: 26px;
+    }
+}

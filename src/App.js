@@ -4,6 +4,7 @@ import LogIn from './components/LogIn/LogIn';
 import Profile from './components/Profile/Profile';
 import Title from './components/Title/Title';
 import Form from './components/Form/Form';
+import SearchBar from './components/SearchBar/SearchBar';
 
 
 
@@ -14,10 +15,14 @@ class App extends Component {
     super(props);
     this.handleLoginClick= this.handleLoginClick.bind(this);
     this.handleLogoutClick= this.handleLogoutClick.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit= this.handleSubmit.bind(this);
+
+
     this.state = {
       route: 'landing',
-    }
+      searchField: ''
+    };
+
   }
 
   handleLoginClick() {
@@ -32,28 +37,46 @@ class App extends Component {
     this.setState({route: 'loggedin'});
   }
 
-  
+  onSearchChange = (event) => {
+    this.setState({ searchField: event.target.value})
+  }
+
+
+
+
+
+
 
   render() {
     const { route } = this.state;
+
+    let SEARCHBAR = <SearchBar searchChange={this.onSearchChange} />;
 
     return (
       <div>
         <Title />
 
+
+
         { route === 'landing'
-          ? <LogIn login={this.handleLoginClick} />
+          ? <div>
+              <LogIn login={this.handleLoginClick} />
+              {SEARCHBAR}
+            </div>
           : ( route === 'signin'
               ? <Form submit={this.handleSubmit} />
               : ( 
                   <div>
                       <Navbar logout={this.handleLogoutClick} />
                       <Profile />
+                      {SEARCHBAR}
                    </div>
 
                 )
             )
         }
+
+
 
       </div>
     );
