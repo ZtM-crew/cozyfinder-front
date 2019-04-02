@@ -21,6 +21,6 @@ export default Sidebar
 
 // Account settings
 // Favorites
-// Search history
+// SearchBar history
 // Mortgage calculator
 // Sign out
