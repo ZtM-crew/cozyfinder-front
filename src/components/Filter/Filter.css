@@ -1,0 +1,47 @@
+.filterdiv strong {
+
+    display: inline-block;
+    position: absolute;
+    margin-left: 2%;
+    padding-top: 0.35%;
+
+}
+
+.input-div {
+
+    display: inline-block;
+    max-width: 38%;
+}
+
+
+.input-logo {
+    width: 25px;
+    position: absolute;
+    padding-top: 0.15%;
+}
+
+
+.input {
+    width: 35%;
+    margin-left: 48%;
+    text-align: center;
+}
+
+.filter-btn {
+    position: absolute;
+    display: inline-block;
+}
+
+.filter-btn strong {
+    margin-left: 2%;
+    padding-top: 25%;
+}
+
+
+.filter-btn img {
+    width: 25px;
+    margin-left: 300%;
+    padding-top: 10%;
+    cursor: pointer;
+}
+
