@@ -1,9 +1,10 @@
 import React from 'react';
+import Filter from '../Filter/Filter';
 import './SearchBar.css'
 
 
 
-const SearchBar = ({searchChange}) => {
+const SearchBar = ({searchChange, bedInput, bathInput, typeChange, garageChange}) => {
 
     return(
 
@@ -22,12 +23,12 @@ const SearchBar = ({searchChange}) => {
                             </button>
                             <input id="search" type="search" placeholder="Search values" defaultValue='' onChange={searchChange}/>
                         </div>
-
-                        {/*Filter elements*/}
-
                     </div>
                 </fieldset>
             </form>
+
+            <Filter bedInput={bedInput} bathInput={bathInput} typeChange={typeChange} garageChange={garageChange} />
+
         </div>
 
 
