@@ -24,22 +24,23 @@ class FilterButton extends React.Component {
 
         const {typeChange, garageChange} = this.props;
 
-        const {dropdownOpen} = this.state
+        const {dropdownOpen} = this.state;
         return (
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} >
                 <DropdownToggle
                     tag="span"
                     data-toggle="dropdown"
                     aria-expanded={this.state.dropdownOpen}
+
                 >
 
                     <img src={controls} />
                 </DropdownToggle>
                 {dropdownOpen &&
 
-                <DropdownMenu right>
+                <DropdownMenu style={{ margin: '-100px 0px 0px 120px' }} >
 
-                    <FilterContent typeChange={typeChange} garageChange={garageChange}/>
+                    <FilterContent typeChange={typeChange} garageChange={garageChange} />
 
                 </DropdownMenu>
 
@@ -50,4 +51,6 @@ class FilterButton extends React.Component {
 }
 
 export default FilterButton;
+
+
 
