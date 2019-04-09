@@ -5,6 +5,7 @@ import Profile from './components/Profile/Profile';
 import Title from './components/Title/Title';
 import Form from './components/Form/Form';
 import SearchBar from './components/SearchBar/SearchBar';
+import Map from './components/Map/Map';
 
 
 
@@ -94,8 +95,9 @@ class App extends Component {
                                bathInput={this.bathInput}
                                typeChange = {this.typeChange}
                                garageChange = {this.garageChange}
-
     />;
+
+    let MAP = <Map />;
 
     return (
       <div>
@@ -107,6 +109,7 @@ class App extends Component {
           ? <div>
               <LogIn login={this.handleLoginClick} />
               {SEARCHBAR}
+              {MAP}
             </div>
           : ( route === 'signin'
               ? <Form submit={this.handleSubmit} />
@@ -115,6 +118,7 @@ class App extends Component {
                       <Navbar logout={this.handleLogoutClick} />
                       <Profile />
                       {SEARCHBAR}
+                      {MAP}
                    </div>
 
                 )
