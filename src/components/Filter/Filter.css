@@ -1,0 +1,51 @@
+.filterdiv strong {
+
+    display: inline-block;
+    position: absolute;
+    margin-left: 35px;
+    padding-top: 5px;
+
+}
+
+.input-div {
+
+    display: inline-block;
+    max-width: 300px;
+}
+
+
+.input-logo {
+    width: 25px;
+    position: absolute;
+    margin-left: 5px;
+}
+
+
+.input {
+    width: 65px;
+    margin: 1px 15px 0px 90px;
+    text-align: center;
+}
+
+.filter-btn {
+    position: absolute;
+    display: inline-block;
+}
+
+.filter-btn strong {
+    margin-left: 10px;
+    padding-top: 5px;
+}
+
+
+.filter-btn img {
+    width: 25px;
+    margin-left: 75px;
+    cursor: pointer;
+}
+
+/*
+Some properties are positioned as absolute, it is not preferable for responsive design.
+Recommended to optimize in the future
+*/
+

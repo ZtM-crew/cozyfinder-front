@@ -5,12 +5,12 @@ import Profile from './components/Profile/Profile';
 import Title from './components/Title/Title';
 import Form from './components/Form/Form';
 import SearchBar from './components/SearchBar/SearchBar';
-
-
+import Map from './components/Map/Map';
 
 
 
 class App extends Component {
+
   constructor(props){
     super(props);
     this.handleLoginClick= this.handleLoginClick.bind(this);
@@ -18,10 +18,26 @@ class App extends Component {
     this.handleSubmit= this.handleSubmit.bind(this);
 
 
+
     this.state = {
       route: 'landing',
-      searchField: ''
+      searchField: '',
+
+      // Filter states
+      bed: 0,
+      bath: 0,
+      type: 'any',
+      garage: 'no',
+      //-----------
+
+
+
+
+
     };
+
+    // If Bed or Bath value = 0, means no additional filtering, input limited between 1 to 50
+
 
   }
 
@@ -39,7 +55,31 @@ class App extends Component {
 
   onSearchChange = (event) => {
     this.setState({ searchField: event.target.value})
-  }
+  };
+
+  bedInput = (e) => {
+    this.setState({ bed: e.target.value});
+
+  };
+
+  bathInput = (e) => {
+    this.setState({ bath: e.target.value});
+
+  };
+
+  typeChange = (e) => {
+    this.setState({type: e.target.value});
+
+  };
+
+  garageChange = (e) => {
+    this.setState({garage: e.target.value});
+
+  };
+
+
+
+
 
 
 
@@ -50,7 +90,14 @@ class App extends Component {
   render() {
     const { route } = this.state;
 
-    let SEARCHBAR = <SearchBar searchChange={this.onSearchChange} />;
+    let SEARCHBAR = <SearchBar searchChange={this.onSearchChange}
+                               bedInput={this.bedInput}
+                               bathInput={this.bathInput}
+                               typeChange = {this.typeChange}
+                               garageChange = {this.garageChange}
+    />;
+
+    let MAP = <Map />;
 
     return (
       <div>
@@ -62,6 +109,7 @@ class App extends Component {
           ? <div>
               <LogIn login={this.handleLoginClick} />
               {SEARCHBAR}
+              {MAP}
             </div>
           : ( route === 'signin'
               ? <Form submit={this.handleSubmit} />
@@ -70,6 +118,7 @@ class App extends Component {
                       <Navbar logout={this.handleLogoutClick} />
                       <Profile />
                       {SEARCHBAR}
+                      {MAP}
                    </div>
 
                 )
