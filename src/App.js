@@ -127,7 +127,6 @@ class App extends Component {
                 <Title />
 
 
-
                 { route === 'landing'
                     ? <div>
                         <LogIn login={this.handleLoginClick} />
