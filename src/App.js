@@ -87,7 +87,14 @@ class App extends Component {
 
         const {searchField} = this.state;
 
-        const response = await fetch('http://localhost:3000/search/new york');
+        /**
+         Fetch URL connected to Heroku by default, if you want to run the backend as local
+         replace only the domains and keep the path:
+         Example: fetch('http://localhost:3000/search/new york')
+         **/
+        const response = await fetch('https://cozy-back.herokuapp.com/search/new york');
+
+
         const data = await response.json();
 
 
@@ -102,7 +109,7 @@ class App extends Component {
                 this.setState({latitude: lat})
                 this.setState({longitude: long})
             }
-            //console.log(data['resultList'][i]['name']['_text'])     //listing all the New York neighbourhoods name
+            console.log(data['resultList'][i])     //listing all the New York neighbourhoods infos
         }
         console.log(this.state)
 

@@ -24,7 +24,7 @@ class TomTomMap extends React.Component {
                 zoom: 14
 
             });
-            console.log('TMap', lat, long)
+            //console.log('TMap', lat, long)
         }
 
     }

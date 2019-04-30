@@ -9,7 +9,7 @@ class Map extends React.Component {
 
         const {lat, long} = this.props;
 
-        console.log('Map', lat, long)
+        //console.log('Map', lat, long)
 
         return(
            <TomTomMap lat={lat} long={long} />
