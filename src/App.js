@@ -6,6 +6,7 @@ import Title from './components/Title/Title';
 import Form from './components/Form/Form';
 import SearchBar from './components/SearchBar/SearchBar';
 import Map from './components/Map/Map';
+import List from './components/List/List';
 
 class App extends Component {
 
@@ -139,6 +140,7 @@ class App extends Component {
                         <LogIn login={this.handleLoginClick} />
                         {SEARCHBAR}
                         {MAP}
+                        <List />
                     </div>
                     : ( route === 'signin'
                             ? <Form submit={this.handleSubmit} />
@@ -148,6 +150,7 @@ class App extends Component {
                                     <Profile />
                                     {SEARCHBAR}
                                     {MAP}
+                                    <List />
                                 </div>
 
                             )
