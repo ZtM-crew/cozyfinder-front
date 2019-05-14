@@ -19,7 +19,7 @@ const Filter = ({bedInput, bathInput, typeChange, garageChange}) => {
             </div>
             <div className='filter-btn'>
                 <strong>Filters</strong>
-                <FilterButton typeChange={typeChange} garageChange={garageChange}/>
+                <FilterButton typeChange={typeChange} garageChange={garageChange} />
             </div>
         </div>
     );

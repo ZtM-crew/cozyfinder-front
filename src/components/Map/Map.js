@@ -1,6 +1,8 @@
 import React from 'react';
-import TomTomMap from './TomTomMap/TomTomMap'
+import TomTomMap from './TomTomMap/TomTomMap';
 import './Map.css';
+import List from './List/List';
+
 
 class Map extends React.Component {
 
@@ -9,10 +11,13 @@ class Map extends React.Component {
 
         const {lat, long} = this.props;
 
-        //console.log('Map', lat, long)
+        console.log('Map', lat, long)
 
         return(
-           <TomTomMap lat={lat} long={long} />
+            <div style={{position: 'relative', overflow:'auto'}}>
+                {/*<List searchRes={this.props.searchRes}/>*/}
+                <TomTomMap lat={lat} long={long} />
+            </div>
         )
     }
 }

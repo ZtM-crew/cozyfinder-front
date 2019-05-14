@@ -1,4 +1,6 @@
+
 #map {
     width: 80vm;
     height: 75vh;
+    z-index: 0;
 }
