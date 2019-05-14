@@ -10,31 +10,31 @@ Also, the latest version of this SDK can be found there.
 The package contains the following files:
 
 - `tomtom.min.js` - Library in [UMD format](https://github.com/umdjs/umd). The code is minified and does not need any external dependencies.
-- `tomtom.min.js.map` - Source map for the SDK built file.
-- `map.css` - Cascading Style Sheet needed by the library. It is necessary to load it in the HTML file next with tomtom.min.js.
+- `tomtom.min.js.LMap` - Source LMap for the SDK built file.
+- `LMap.css` - Cascading Style Sheet needed by the library. It is necessary to load it in the HTML file next with tomtom.min.js.
 - `LICENSE.txt` - License file.
 - `README.md` - This file.
-- `images/` - A few images needed by the library and fallback PNGs for older browsers. The icons used by the SDK are vector graphics which are provided embedded in `map.css`.
+- `images/` - A few images needed by the library and fallback PNGs for older browsers. The icons used by the SDK are vector graphics which are provided embedded in `LMap.css`.
 - `glyphs/` - Glyphs files used by the vector tile layer.
-- `sprites/` - Sprite images used by the vector tile layer to display the shields over the map.
+- `sprites/` - Sprite images used by the vector tile layer to display the shields over the LMap.
 - `mapbox-gl-js/`* - Version of the mapbox-gl-js library that is proved to be compatible with the class [L.TomTomVectorLayer](https://developer.tomtom.com/maps-sdk-web/documentation#L.TomTomVectorLayer). **Only available in the version without vector maps support built into the SDK**.
 
 ## Getting started
 
 Please check the examples for better understanding of the common use cases. The minimal *HTML* page allowing to display
-the TomTom map could look like this:
+the TomTom LMap could look like this:
 
 ```html
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="map.css"/>
+        <link rel="stylesheet" type="text/css" href="LMap.css"/>
         <script src="tomtom.min.js"></script>
     </head>
     <body style="width: 100%; height: 100%; margin: 0; padding: 0;">
-        <div id="map" style="width: 100%; height: 100%;"></div>
+        <div id="LMap" style="width: 100%; height: 100%;"></div>
         <script>
             tomtom.key("${api.key}");
-            var map = tomtom.map("map");
+            var LMap = tomtom.LMap("LMap");
         </script>
     </body>
 </html>

@@ -1,0 +1,22 @@
+.container {
+    position: absolute;
+    z-index: 10;
+    display: inline-block;
+    right: 10px;
+    width: 40vh;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.list-cont {
+    margin: 10px 10px 10px 10px;
+    color: white;
+    text-align: center;
+}
+
+.results {
+
+}
+
+
+
