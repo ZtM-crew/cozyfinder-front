@@ -6,7 +6,7 @@ import Title from './components/Title/Title';
 import Form from './components/Form/Form';
 import SearchBar from './components/SearchBar/SearchBar';
 import Map from './components/Map/Map';
-import List from './components/List/List';
+import List from './components/List/list';
 
 class App extends Component {
 
