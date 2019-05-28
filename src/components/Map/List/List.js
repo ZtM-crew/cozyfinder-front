@@ -8,7 +8,7 @@ const List = ({searchRes}) =>{
         <div className={"container"}>
             <div className={'list-cont'}>
                 <h3>Results</h3>
-                <div className={'results'}>
+                <div className='results'>
 
                     {
                         searchRes.map((item, i) => {

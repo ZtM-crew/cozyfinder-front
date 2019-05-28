@@ -14,7 +14,7 @@ class TomTomMap extends React.Component {
 
     componentDidMount() {
 
-        let {lat, long} = this.props
+        let {loc} = this.props
 
         const script = document.createElement('script');
 
@@ -26,21 +26,38 @@ class TomTomMap extends React.Component {
             this.setState({map: window.tomtom.L.map('map', {
                     source: 'vector',
                     key: 'HepOBha6a6Qpm1KKkLvT88hpHEmOKSed',
-                    center: [lat, long],
+                    center: loc,
                     basePath: '/map_sdk',
                     zoom: 14
 
-            })});
+            }) });
         }
+
+
 
     }
 
     componentDidUpdate(prevProps) {
 
-        if(prevProps.lat !== this.props.lat || prevProps.long !== this.props.long) {
-            this.state.map.setView([this.props.lat, this.props.long], 14);
+        if(prevProps.loc !== this.props.loc) {
+            this.state.map.setView(this.props.loc, 16);
+            this.addMarker()
+
         }
     }
+
+    addMarker() {
+
+        const name = this.props.details[0]
+        const value = (this.props.details[1] === 'Currently not available') ? this.props.details[1] : `$${this.props.details[1]}`
+
+        const info = `<h2>${name}</h2><p style="font-size: 15px">Average value: ${value}</p>`
+
+        window.tomtom.L.marker(this.props.loc)
+            .addTo(this.state.map)
+            .bindPopup(info).openPopup()
+    }
+
 
 
     render() {

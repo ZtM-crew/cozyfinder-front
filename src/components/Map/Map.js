@@ -9,14 +9,12 @@ class Map extends React.Component {
 
     render() {
 
-        const {lat, long} = this.props;
-
-        console.log('Map', lat, long)
+        const {loc, value, details} = this.props;
 
         return(
             <div style={{position: 'relative', overflow:'auto'}}>
                 {/*<List searchRes={this.props.searchRes}/>*/}
-                <TomTomMap lat={lat} long={long} />
+                <TomTomMap loc={loc} value={value} details={details}/>
             </div>
         )
     }
