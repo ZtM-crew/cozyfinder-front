@@ -4,8 +4,11 @@
     display: inline-block;
     right: 10px;
     width: 40vh;
-    height: 100%;
+    height: 75vh;
     background: rgba(0,0,0,0.4);
+    overflow-x: hidden;
+    overflow-x: auto;
+    text-align: justify;
 }
 
 .list-cont {
@@ -15,7 +18,6 @@
 }
 
 .results {
-
 }
 
 

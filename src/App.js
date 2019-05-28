@@ -18,10 +18,10 @@ class App extends Component {
         this.searchButton = this.searchButton.bind(this);
 
 
-
         this.state = {
             route: 'landing',
             searchField: '',
+            keypress: null,
 
             // Filter states
             bed: 0,
@@ -31,10 +31,8 @@ class App extends Component {
             //-----------
 
             // Maps
-            latitude: 40.716906,
-            longitude: -73.988429,
-            searchRes: []
-
+            details: [],
+            loc: [40.716906,-73.988429]
 
         }
 
@@ -58,7 +56,20 @@ class App extends Component {
 
     onSearchChange = (event) => {
         this.setState({ searchField: event.target.value})
-        //console.log(this.state)
+
+        switch(event.keyCode){
+            case 13:
+                return this.searchButton();
+            case 46:
+                event.target.value = null;
+                break;
+            default:
+                break;
+        }
+
+
+        //console.log(event.keyCode)
+
     };
 
     bedInput = (e) => {
@@ -94,41 +105,63 @@ class App extends Component {
          Example: fetch('http://localhost:3000/search/new york')
          **/
 
-        //const FETCH_URI = 'https://cozy-back.herokuapp.com/search/new york';
-        const FETCH_URI = 'http://localhost:3000/search/new york';
+        const FETCH_URI = 'https://cozy-back.herokuapp.com/search/new york';
+        //const FETCH_URI = 'http://localhost:3000/search/new york';
 
         const response = await fetch(FETCH_URI);
 
         const data = await response.json();
 
 
-        for(let i=0; i<data['resultList'].length; i++){
-            if(searchField === data['resultList'][i]['name']['_text'].toLowerCase()) {
-                const lat = data['resultList'][i]['latitude']['_text']
-                const long = data['resultList'][i]['longitude']['_text']
+        /** Searching for the location provided by the user in the searchfield **/
+        /** Database includes locations name as capitalized, to avoid errors need to capitalized the user input too  **/
+        /** result will include the neighbourhood object if there is a match **/
 
-                //console.log(data['resultList'][i]['name']['_text'], lat, long)
+        let result = data['resultList'].find(el => el['name']['_text'] === this.capitalize(searchField))
 
+        /** As the search is successful the following statement gets the necessary datas from the object
+         * and updates the state to send them to the corresponding components
+         * Ex: gps location, neighborhood name and value
+         * In a case there is no match, user will be notified
+         **/
 
-                this.setState({latitude: lat})
-                this.setState({longitude: long})
-            }
+        if(result !== undefined) {
 
+            const gps = [ result['latitude']['_text'], result['longitude']['_text'] ]
+            const name = result['name']['_text']
+            const price = (result['zindex']) ? result['zindex']['_text'] : 'Currently not available'
 
-            if(data['resultList'][i]['zindex']){
-                this.setState({searchRes: [...this.state.searchRes, [data['resultList'][i]['name']['_text'],
-                        data['resultList'][i]['zindex']['_text'] ]] })
-                //console.log(data['resultList'][i]['name']['_text'], data['resultList'][i]['zindex']['_text'])
+            this.setState({details: [name, price]})
+            this.setState({loc: gps})
 
-            }
+            // if(result['zindex']){
+            //     this.setState({value: result['zindex']['_text'] })
+            // }
+            // else{
+            //     this.setState({value: 'Currently not available' })
+            // }
+            // //at the start value does not load
+
+        }else{
+            console.log('Location not found')
         }
-        console.log(this.state)
+
 
     }
 
 
+    capitalize(str) {
+
+        let split = str.split(' ')
+        for(let i=0; i<split.length; i++){
+            split[i] = split[i].charAt(0).toUpperCase() + split[i].slice(1).toLowerCase()
+        }
+        return split.join(' ')
+    }
+
+
     render() {
-        const { route, latitude, longitude, searchRes } = this.state;
+        const { route, loc, value, details } = this.state;
 
         let SEARCHBAR = <SearchBar searchChange={this.onSearchChange}
                                    bedInput={this.bedInput}
@@ -136,9 +169,10 @@ class App extends Component {
                                    typeChange = {this.typeChange}
                                    garageChange = {this.garageChange}
                                    searchButton = {this.searchButton}
+
         />;
 
-        let MAP = <Map lat={latitude} long={longitude} searchRes={searchRes}/>;
+        let MAP = <Map loc={loc} value={value} details={details}/>;
 
         return (
             <div>
