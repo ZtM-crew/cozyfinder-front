@@ -32,7 +32,8 @@ class App extends Component {
 
             // Maps
             details: [],
-            loc: [40.716906,-73.988429]
+            loc: [40.716906,-73.988429],
+            error: 0
 
         }
 
@@ -72,25 +73,14 @@ class App extends Component {
 
     };
 
-    bedInput = (e) => {
-        this.setState({ bed: e.target.value});
+    bedInput = (e) => {this.setState({ bed: e.target.value})};
 
-    };
+    bathInput = (e) => {this.setState({ bath: e.target.value})};
 
-    bathInput = (e) => {
-        this.setState({ bath: e.target.value});
+    typeChange = (e) => {this.setState({type: e.target.value})};
 
-    };
+    garageChange = (e) => {this.setState({garage: e.target.value})};
 
-    typeChange = (e) => {
-        this.setState({type: e.target.value});
-
-    };
-
-    garageChange = (e) => {
-        this.setState({garage: e.target.value});
-
-    };
 
     async searchButton() {
 
@@ -133,24 +123,24 @@ class App extends Component {
 
             this.setState({details: [name, price]})
             this.setState({loc: gps})
+            this.setState({error: 0})
 
-            // if(result['zindex']){
-            //     this.setState({value: result['zindex']['_text'] })
-            // }
-            // else{
-            //     this.setState({value: 'Currently not available' })
-            // }
-            // //at the start value does not load
 
         }else{
             console.log('Location not found')
+            this.setState({error: 1})
         }
+
+
 
 
     }
 
 
     capitalize(str) {
+
+        /** Taking the string from the searchfield, separate them by words, makes every word's first letter uppercase
+         * and lowercase the rest, finally put them together. **/
 
         let split = str.split(' ')
         for(let i=0; i<split.length; i++){
@@ -161,7 +151,7 @@ class App extends Component {
 
 
     render() {
-        const { route, loc, value, details } = this.state;
+        const { route, loc, value, details, error } = this.state;
 
         let SEARCHBAR = <SearchBar searchChange={this.onSearchChange}
                                    bedInput={this.bedInput}
@@ -169,6 +159,7 @@ class App extends Component {
                                    typeChange = {this.typeChange}
                                    garageChange = {this.garageChange}
                                    searchButton = {this.searchButton}
+                                   error={error}
 
         />;
 
@@ -177,34 +168,40 @@ class App extends Component {
         return (
             <div>
                 <Title />
-
-
-                { route === 'landing'
-                    ? <div>
-                        <LogIn login={this.handleLoginClick} />
-                        {SEARCHBAR}
-                        {MAP}
-                        <List />
-                    </div>
-                    : ( route === 'signin'
-                            ? <Form submit={this.handleSubmit} />
-                            : (
-                                <div>
-                                    <Navbar logout={this.handleLogoutClick} />
-                                    <Profile />
-                                    {SEARCHBAR}
-                                    {MAP}
-                                    <List />
-                                </div>
-
-                            )
-                    )
-                }
-
-
-
+                {SEARCHBAR}
+                {MAP}
             </div>
         );
+
+        // return (
+        //     <div>
+        //         <Title />
+        //
+        //
+        //         { route === 'landing'
+        //             ? <div>
+        //                 <LogIn login={this.handleLoginClick} />
+        //                 {SEARCHBAR}
+        //                 {MAP}
+        //             </div>
+        //             : ( route === 'signin'
+        //                     ? <Form submit={this.handleSubmit} />
+        //                     : (
+        //                         <div>
+        //                             <Navbar logout={this.handleLogoutClick} />
+        //                             <Profile />
+        //                             {SEARCHBAR}
+        //                             {MAP}
+        //                         </div>
+        //
+        //                     )
+        //             )
+        //         }
+        //
+        //
+        //
+        //     </div>
+        // );
     }
 
 }
