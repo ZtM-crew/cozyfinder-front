@@ -175,3 +175,8 @@ select {
         height: 26px;
     }
 }
+
+.error-msg {
+    width: 100%;
+    color: #a82238;
+}
